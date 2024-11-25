@@ -217,8 +217,8 @@
     console.log(location.host, 'location.host')
     var currentUrl = window.location.href;
     var questionMarkIndex = currentUrl.indexOf('=');
+    console.log('https://isidr1234z.github.io/share/?url=' + downloadUrl, '123')
     if(isWeiXin() && location.host !== 'isidr1234z.github.io') {
-      console.log('https://isidr1234z.github.io/share/?url=' + downloadUrl, '123')
       window.location.href = 'https://isidr1234z.github.io/share/?url=' + downloadUrl
     }
     if(questionMarkIndex && (currentUrl.includes('www') || currentUrl.includes('new-vip'))) {
