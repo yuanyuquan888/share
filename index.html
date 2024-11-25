@@ -213,28 +213,19 @@
   function download() {
     document.getElementById('overlay').style.display = 'block'
   }
-  function copyToClipboard() {
-    if(!downloadUrl) {
-      return
-    }
-    var textToCopy = document.getElementById("textToCopy");
-    var textarea = document.createElement("textarea");
-    textarea.value = downloadUrl;
-    document.body.appendChild(textarea);
-    textarea.select();
-    textarea.setSelectionRange(0, 99999); // 为了兼容移动设备
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-    alert('复制成功');
-  }
   (function($) {
+    console.log(location.host, 'location.host')
     var currentUrl = window.location.href;
     var questionMarkIndex = currentUrl.indexOf('=');
-    if(questionMarkIndex && currentUrl.includes('www')) {
+    if(isWeiXin() && location.host !== 'isidr1234z.github.io') {
+      console.log('https://isidr1234z.github.io/share/?url=' + downloadUrl, '123')
+      window.location.href = 'https://isidr1234z.github.io/share/?url=' + downloadUrl
+    }
+    if(questionMarkIndex && (currentUrl.includes('www') || currentUrl.includes('new-vip'))) {
       downloadUrl = window.location.href.slice(questionMarkIndex+1);
       if(!isWeiXin()) {
         window.location.href = downloadUrl
-      }
+      } 
     }
   }
   )(jQuery);
